@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Greeting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;400;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: rgb(7, 122, 140);
+            background-size: cover;
+            color: rgb(248, 239, 2);
+            text-shadow: 2px 2px 4px #000000;
+            animation: backgroundTransition 5s infinite alternate;
+        }
+        @keyframes backgroundTransition {
+            from {
+                background-color: rgb(192, 59, 134);
+            }
+            to {
+                background-color: rgb(176, 0, 29);
+            }
+        }
+        .greeting {
+            text-align: center;
+        }
+        .greeting h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .greeting p {
+            font-size: 24px;
+            font-weight: 400;
+        }
+        .audio-control {
+            margin-top: 20px;
+        }
+        .audio-button {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #dbf802;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+        }
+        .audio-button:hover {
+            background-color: #e8dc02;
+        }
+        .play-icon, .pause-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #07128c;
+        }
+        .pause-icon {
+            display: none;
+        }
+        img, video {
+            max-width: 100%;
+            height: auto;
+       }
+
+    </style>
+</head>
+<body>
+    <div class="greeting">
+        <h1>Happy Birthday Arthiii!</h1>
+        <p>Wishing you a day filled with love and joy.</p>
+        <div class="audio-control">
+            <div class="audio-button" id="audioButton">
+                <div class="play-icon" id="playIcon">▶</div>
+                <div class="pause-icon" id="pauseIcon">⏸</div>
+            </div>
+            <audio id="birthdaySong" src="song.mp3"></audio>
+        </div>
+    </div>
+    <img src="https://cdn-icons-png.flaticon.com/256/6347/6347303.png">
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var audio = document.getElementById('birthdaySong');
+            var audioButton = document.getElementById('audioButton');
+            var playIcon = document.getElementById('playIcon');
+            var pauseIcon = document.getElementById('pauseIcon');
+
+            audioButton.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'flex';
+                } else {
+                    audio.pause();
+                    playIcon.style.display = 'flex';
+                    pauseIcon.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
